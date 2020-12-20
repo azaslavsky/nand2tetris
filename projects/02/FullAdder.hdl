@@ -13,5 +13,18 @@ CHIP FullAdder {
         carry;   // Left bit of a + b + c
 
     PARTS:
-    // Put you code here:
+    And(a=a,b=b,out=aandb);
+    Xor(a=a,b=b,out=axorb);
+    Not(in=c,out=notc);
+    And(a=aandb,b=notc,out=aandbonly);
+    And(a=axorb,b=c,out=aorbandc);
+    Xor(a=axorb,b=c,out=oneset);
+    Or(a=aandbonly,b=aorbandc,out=twoset);
+    And(a=aandb,b=c,out=allset);
+
+    // Are >2 of the inputs 1?  Set carry to 1.
+    Or(a=allset,b=twoset,out=carry);
+    
+    // Are 1 or 3 of the inputs 1?  Set sum to 1.
+    Or(a=allset,b=oneset,out=sum);
 }
