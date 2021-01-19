@@ -6,7 +6,6 @@
 // Multiplies R0 and R1 and stores the result in R2.
 // (R0, R1, R2 refer to RAM[0], RAM[1], and RAM[2], respectively.)
 
-
 // Set R2 to 0.
 @R2
 AM=0
@@ -23,7 +22,7 @@ AM=0
 
   // Decrement R1.
   @R1
-  AM=D-1
+  M=D-1
 
   // Set D to the value stored in R0.
   @R0
@@ -31,7 +30,7 @@ AM=0
 
   // Adds the value in D (ie, the value from R0) to the value in A (the current R2).
   @R2
-  AM=M+D
+  M=M+D
   
   // Restart LOOP.
   @LOOP
